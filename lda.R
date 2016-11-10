@@ -9,6 +9,7 @@ library(SnowballC)
 library(stringr)
 library(tidytext)
 library(topicmodels)
+library(tikzDevice)
 
 library(foreach)
 library(doParallel)
@@ -62,7 +63,7 @@ n = nrow(dataf)
 ## Fraction to include in each sample
 beta = .8
 ## Total number of samples
-tau = 40
+tau = 25
 
 ## Draw sample corpora, and convert each to DTM
 set.seed(54321)
@@ -163,11 +164,15 @@ agreement_scores = agree_scores %>%
     melt %>%
     mutate(variable = {str_replace(variable, 'result.', '') %>%
                         as.numeric %>% k_range[.]})
+
+tikz(height = 5, width = 7,
+    file = 'lda.tex', standAlone = TRUE)
 ggplot(agreement_scores, aes(variable, value)) + 
     geom_point() + 
     stat_summary(geom = 'line') +
     scale_x_continuous(name = 'k', breaks = k_range) +
     ylab('agreement score')
+dev.off()
 
 
 ## One run through LDA
