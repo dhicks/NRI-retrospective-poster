@@ -1,5 +1,15 @@
+- introduction to NRI
+- basic statistics
+	- # projects funded
+	- # PIs, CoPIs funded
+	- from # organizations
 - stripplot of projects over time
-- projects-people-organization network
+- networks
+	- individuals
+	- organizations
+- why text analysis didn't work
+- references + QR code
+
 
 - personnel "home areas" over time
 - research areas / text analysis over time
