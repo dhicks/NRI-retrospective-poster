@@ -2,6 +2,7 @@ library(tidyverse)
 library(igraph)
 library(stringr)
 library(tidytext)
+library(tikzDevice)
 
 load('cleaned awards.Rdata')
 dataf = dataf %>% select(pi = PrincipalInvestigator, 
@@ -81,17 +82,22 @@ E(individ_net)$type = ifelse(E(individ_net) %in% E(indiv_by_prj_net),
                              'organization')
 E(individ_net)$color = ifelse(E(individ_net)$type == 'project', 'red', 'blue')
 
+components(individ_net)$csize %>% table
+
 ## Plot the whole net, and the largest connected component
 plot(individ_net,
      vertex.label = '',
      vertex.size = 3,
      edge.width = 3)
 
+tikz(standAlone = TRUE, file = 'individuals.tex')
+par(mar = c(0,0,0,0))
 individ_net %>%
     induced_subgraph(components(.)$membership == 1) %>%
     plot(vertex.label = '',
          vertex.size = 3,
          edge.width = 3)
+dev.off()
 
 ## Centrality
 # indiv_centrality = betweenness(individ_net)
@@ -109,13 +115,24 @@ org_net = dataf %>%
     bipartite_projection() %>%
     .$proj2
 
+components(org_net)$csize %>% table
+
+tikz(standAlone = TRUE, sanitize = TRUE, file = 'organizations.tex')
+par(mar = c(0,0,0,0))
 org_net %>%
-    induced_subgraph(components(.)$membership == 1) %>%
-plot(
-     #vertex.label = '',
-     #vertex.size = 50 * betweenness(., normalized = TRUE),
-     vertex.size = 3,
-     edge.width = 3)
+    # induced_subgraph(components(.)$membership == 1) %>%
+    plot(
+        layout = layout_with_kk(.), #layout_with_fr(.),
+        vertex.label = {V(.)$name %>% str_replace_all('([ \\-][^ \\-]*)[ \\-]', '\\1\n')},
+        vertex.label.cex = .5,
+        #vertex.size = 50 * betweenness(., normalized = TRUE),
+        vertex.size = 5,
+        vertex.label.color = 'black',
+        vertex.color = 'light blue',
+        vertex.frame.color = NA,
+        edge.width = 3, 
+        edge.color = 'grey80')
+dev.off()
 
 # bc = betweenness(org_net)
 # ec = eigen_centrality(org_net) %>% .$vector
