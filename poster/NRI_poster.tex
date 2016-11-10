@@ -1,0 +1,110 @@
+\documentclass[a0paper, landscape]{baposter}
+
+\usepackage{hyperref}
+\usepackage{lipsum}
+
+\definecolor{boxcolor}{RGB}{0,215,230}
+
+\begin{document}
+\typeout{Poster rendering started}
+
+\begin{poster}{
+	grid = false, 
+	columns = 4,
+	eyecatcher = true, 
+%	borderColor=bordercol,
+%	headerColorOne=headercol1,
+%	headerColorTwo=headercol2,
+%	headerFontColor=headerfontcol,
+%	boxColorOne=boxcolor,
+%	headershape=roundedright,
+%	headerfont=\Large\sf\bf,
+	headershape = rounded,
+	headerborder = open,
+	headerColorOne = blue, 
+	headerColorTwo = blue,
+	headerFontColor = white,
+	textborder=rectangle,
+	boxColorOne = white,
+	borderColor = black,
+	background=none,
+%	headerborder=open,
+%  boxshade=plain
+}
+%% Eye catcher
+{
+	Eye Catcher, empty if option eyecatcher=false - unused
+}
+%% Title
+{
+	\textbf{The National Robotics Initiative}\\
+	\normalsize A Five-Year Retrospective
+}
+%% Authors
+{
+	Daniel J. Hicks; Reid Simmons\\
+	\small \tt hicks.daniel.j@gmail.com; [email]
+}
+%% Logo
+{
+	% NSF logo and such
+}
+
+\headerbox{Introduction}{name=intro, column = 0, row = 0}{
+	\lipsum[1]
+}
+
+\headerbox{Data Sources}{name = data, column = 0, below = intro}{
+	Data for this poster were retrieved from NSF's public awards database, available at \url{www.nsf.gov/awardsearch/advancedSearch.jsp}.  The dataset includes start and end date, personnel, institutional affiliation, and short descriptions for every project funded by program element code 8013, NRI.  
+}
+
+\headerbox{By the Numbers}{name = stats, column = 0, below = data}{
+	To date, NRI has funded over
+	\begin{itemize}
+	\item 165 distinct projects, involving
+	\item 306 PIs and Co-PIs from
+	\item 97 research universities and other organizations.  
+	\end{itemize}
+}
+
+\headerbox{Projects}{name = projects, column = 1}{
+	This strip plot shows the start and (anticipated) end date for each of the NRI projects, sorted by start date.
+	\includegraphics[width = \linewidth]{../stripplot.pdf}
+}
+
+\headerbox{Collaboration Networks}{name = networks, column = 2}{
+	NRI has fostered connections between individual researchers and their home institutions.  In the first collaboration network, individual PIs and Co-PIs (nodes) are connected by their institutional affiliations (blue edges) and NRI-funded projects (red edges).  In the second collaboration network, universities and other organizations (nodes) are connected by their participation in NRI-funded projects (edges).  Both plots show the largest connected component in the respective networks.  These components include 60\% of NRI-funded PIs and Co-PIs (first network) and 45\% of NRI-participating organizations (second network).  
+	
+	\begin{center}
+		\includegraphics[width = .75\linewidth]{../individuals.pdf}\\
+		\includegraphics[width = .75\linewidth]{../organizations.pdf}
+	\end{center}
+}
+
+\headerbox{Text Analysis}{name = text, column = 3}{
+%	\lipsum[2]
+	Three text analysis methods were used to attempt to identify common themes or clusters of NRI projects: topic modeling with Latent Dirichlet Allocation [LDA] [cite], principal components analysis over terms with high term frequency-inverse document frequency [tf-idf] [cite], and hierarchical clustering using Jaccard distances over high-tf-idf terms [cite].  
+	
+	[cite] describe a method to evaluate the stability of LDA over a given corpus.  In the plot below, for each value of $k$, a LDA model with $k$ topics is fit to 25 subsets comprising 132 project descriptions.  These subset models are then compared to a reference model using all 165 project descriptions.  Agreement scores range from 0 to 1, with 1 indicating perfect agreement between the subset model and the reference model.  
+
+	\includegraphics[width = \linewidth]{../lda.pdf}
+	
+	For values of $k$ from 2 to 12, agreement was uniformly below .5 and frequently below .2, indicating that LDA produces unstable results when applied to short project descriptions.  The two methods based on tf-idf also produced low-quality clustering.  Text analysis is likely to be more informative with longer source texts, such as project descriptions included with proposal submissions.  
+}
+
+\headerbox{References}{column = 1, below = projects}{
+	\begin{itemize}
+		\item ref1
+		\item ref2
+		\item ref3
+	\end{itemize}
+}
+
+%\headerbox{}{name = logo, column = 3, below = text}{
+%	\begin{center}
+%	\includegraphics[height = 2in]{fake_logo.jpg}
+%	\end{center}
+%}
+
+\end{poster}
+\end{document}
