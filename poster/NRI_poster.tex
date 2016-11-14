@@ -1,4 +1,4 @@
-\documentclass[a0paper, landscape]{baposter}
+\documentclass[paperheight = 24in, paperwidth = 36in]{baposter}
 
 \usepackage{hyperref}
 \usepackage{lipsum}
@@ -24,7 +24,7 @@
 	headerColorOne = blue, 
 	headerColorTwo = blue,
 	headerFontColor = white,
-	textborder=rectangle,
+	textborder=bars,
 	boxColorOne = white,
 	borderColor = black,
 	background=none,
@@ -51,14 +51,14 @@
 }
 
 \headerbox{Introduction}{name=intro, column = 0, row = 0}{
-    The National Robotics Initiative [NRI] was launched on June 24, 2011, in a speech by President Obama at Carnegie Mellon University.  The goal of NRI is to accelerate the development and use of robots in the United States that work beside or cooperatively with people.  Over the last five years, innovative robotics research and applications emphasizing the realization of such co-robots working in symbiotic relationships with human partners has been supported by multiple agencies of the federal government including the National Science Foundation (NSF), the National Aeronautics and Space Administration (NASA), the National Institutes of Health (NIH), the U.S. Department of Agriculture (USDA), the U.S. Department of Energy (DOE), and the U.S. Department of Defense (DOD). The purpose of this program is to support the development of this next generation of robotics, to advance the capability and usability of such systems and artifacts, and to encourage existing and new communities to focus on innovative application areas. This poster provides an overview of an ongoing retrospective analysis of the research community supported by NRI.  
+    The National Robotics Initiative [NRI] was launched on June 24, 2011, in a speech by President Obama at Carnegie Mellon University.  The goal of NRI is to accelerate the development and use of robots in the United States that work beside or cooperatively with people.  Over the last five years, innovative robotics research and applications emphasizing the realization of such co-robots working in symbiotic relationships with human partners has been supported by multiple agencies of the federal government. This poster provides an overview of an ongoing retrospective analysis of the research community supported by NRI.  
 }
 
-\headerbox{Data Sources}{name = data, column = 0, below = intro}{
-	Data for this poster were retrieved from NSF's public awards database, \url{www.nsf.gov/awardsearch/advancedSearch.jsp}.  The dataset includes start and end date, personnel, institutional affiliation, and short descriptions for every NSF-funded project with program element code 8013, indicating NRI funding. At this time, the dataset does not necessarily include projects funded by other agencies participating in NRI.  
-}
+% \headerbox{Data Sources}{name = data, column = 0, below = intro}{
+% 	Data were retrieved from NSF's public awards database, \url{www.nsf.gov/awardsearch/advancedSearch.jsp}.  The dataset includes start and end date, personnel, institutional affiliation, and short descriptions for every NSF-funded project with program element code 8013, indicating NRI funding. At this time, the dataset does not necessarily include projects funded by other agencies participating in NRI.  
+% }
 
-\headerbox{By the Numbers}{name = stats, column = 0, below = data}{
+\headerbox{By the Numbers}{name = stats, column = 0, below = intro}{
 	To date, NRI has funded over
 	\begin{itemize}
 	\item 165 distinct projects, involving
@@ -72,33 +72,33 @@
 	\includegraphics[width = \linewidth]{../stripplot.pdf}
 }
 
-\headerbox{Collaboration Networks}{name = networks, column = 2}{
+\headerbox{Collaboration Networks}{name = networks, column = 2, span = 2}{
 	NRI has fostered connections between individual researchers and their home institutions.  In the first collaboration network, individual PIs and Co-PIs (nodes) are connected by their institutional affiliations (blue edges) and NRI-funded projects (red edges).  In the second collaboration network, universities and other organizations (nodes) are connected by their participation in NRI-funded projects (edges).  
 	
 	\begin{center}
-		\includegraphics[width = .75\linewidth]{../individuals.pdf}\\
-		\includegraphics[width = .75\linewidth]{../organizations.pdf}
+		\includegraphics[width = .49\linewidth]{../individuals.pdf}
+		\includegraphics[width = .49\linewidth]{../organizations.pdf}
 	\end{center}
 	
 	Both plots show the largest connected component in the respective networks.  These components include 60\% of NRI-funded PIs and Co-PIs (first network) and 45\% of NRI-participating organizations (second network).  
 }
 
-\headerbox{Text Analysis}{name = text, column = 3}{
-%	\lipsum[2]
-	Several text analysis methods were used to attempt to identify common themes or clusters of NRI projects, including topic modeling with Latent Dirichlet Allocation [LDA].  [cite] describe a method to evaluate the stability of LDA over a given corpus.  In the plot below, for each value of $k$, a LDA model with $k$ topics is fit to 25 subsets comprising 132 project descriptions.  These subset models are then compared to a reference model fit to all 165 project descriptions.  Agreement scores range from 0 to 1, with 1 indicating perfect agreement between the subset model and the reference model.  The line indicates the mean score at each value of $k$.  
+% \headerbox{Text Analysis}{name = text, column = 2, span = 2, below = networks}{
+% %	\lipsum[2]
+% 	Several text analysis methods were used to attempt to identify common themes or clusters of NRI projects, including topic modeling with Latent Dirichlet Allocation [LDA].  [cite] describe a method to evaluate the stability of LDA over a given corpus.  In the plot below, for each value of $k$, a LDA model with $k$ topics is fit to 25 subsets comprising 132 project descriptions.  These subset models are then compared to a reference model fit to all 165 project descriptions.  Agreement scores range from 0 to 1, with 1 indicating perfect agreement between the subset model and the reference model.  The line indicates the mean score at each value of $k$.  
+% 
+% 	\includegraphics[width = .17\linewidth]{../lda.pdf}
+% 	
+% 	For $k \in [2, 12]$, agreement was uniformly below .5 and frequently below .2, indicating that LDA produces unstable results when applied to the short project descriptions available in the public awards database.  Other methods also produced low-quality clustering.  Text analysis is likely to be more informative with longer source texts, such as project descriptions included with proposal submissions.  
+% }
 
-	\includegraphics[width = \linewidth]{../lda.pdf}
-	
-	For $k \in [2, 12]$, agreement was uniformly below .5 and frequently below .2, indicating that LDA produces unstable results when applied to the short project descriptions available in the public awards database.  Other methods also produced low-quality clustering.  Text analysis is likely to be more informative with longer source texts, such as project descriptions included with proposal submissions.  
-}
-
-\headerbox{References}{column = 3, below = text}{
-	\begin{itemize}
-		\item ref1
-		\item ref2
-		\item ref3
-	\end{itemize}
-}
+% \headerbox{References}{column = 2, below = networks}{
+% 	\begin{itemize}
+% 		\item ref1
+% 		\item ref2
+% 		\item ref3
+% 	\end{itemize}
+% }
 
 %\headerbox{}{name = logo, column = 3, below = text}{
 %	\begin{center}
