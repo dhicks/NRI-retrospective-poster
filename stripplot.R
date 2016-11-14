@@ -17,7 +17,7 @@ dataf = dataf %>% group_by(project.id) %>%
     
 dataf$color = rep_len(scales::brewer_pal(palette = 'Set1')(4), nrow(dataf))
 
-tikz(height = 20, width = 12, sanitize = TRUE, standAlone = TRUE, 
+tikz(height = 25, width = 12, sanitize = TRUE, standAlone = TRUE, 
      file = 'stripplot.tex')
 ggplot(dataf, aes(title)) + 
     geom_linerange(aes(ymin = start, ymax = end), color = dataf$color) +
