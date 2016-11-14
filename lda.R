@@ -28,7 +28,7 @@ dataf = dataf %>%
     filter(!duplicated(.)) %>%
     mutate(length = str_length(abstract)) %>%
     group_by(project.id) %>%
-    slice(which.min(length)) %>%
+    slice(which.max(length)) %>%
     ungroup() %>%
     select(-length)
 
