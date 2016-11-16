@@ -1,7 +1,9 @@
-\documentclass[paperheight = 24in, paperwidth = 36in]{baposter}
+\documentclass[paperheight = 24in, paperwidth = 36in, margin = 1in, 
+                fontscale = .4]{baposter}
 
 \usepackage{hyperref}
 \usepackage{lipsum}
+\usepackage{multicol}
 
 \definecolor{boxcolor}{RGB}{0,215,230}
 
@@ -73,38 +75,43 @@
 }
 
 \headerbox{Collaboration Networks}{name = networks, column = 2, span = 2}{
-	NRI has fostered connections between individual researchers and their home institutions.  In the first collaboration network, individual PIs and Co-PIs (nodes) are connected by their institutional affiliations (blue edges) and NRI-funded projects (red edges).  In the second collaboration network, universities and other organizations (nodes) are connected by their participation in NRI-funded projects (edges).  
+    \begin{multicols}{2}
+	NRI has fostered connections between researchers and institutions.  In the first collaboration network, individual PIs and Co-PIs (nodes) are connected by their institutional affiliations (blue edges) and NRI-funded projects (red edges).  In the second collaboration network, universities and other organizations (nodes) are connected by their participation in NRI-funded projects (edges).  
+	\end{multicols}
 	
 	\begin{center}
 		\includegraphics[width = .49\linewidth]{../individuals.pdf}
 		\includegraphics[width = .49\linewidth]{../organizations.pdf}
 	\end{center}
 	
-	Both plots show the largest connected component in the respective networks.  These components include 60\% of NRI-funded PIs and Co-PIs (first network) and 45\% of NRI-participating organizations (second network).  
+	% Both plots show the largest connected component in the respective networks.  These components include 60\% of NRI-funded PIs and Co-PIs (first network) and 45\% of NRI-participating organizations (second network).  
 }
 
-% \headerbox{Text Analysis}{name = text, column = 2, span = 2, below = networks}{
-% %	\lipsum[2]
-% 	Several text analysis methods were used to attempt to identify common themes or clusters of NRI projects, including topic modeling with Latent Dirichlet Allocation [LDA].  [cite] describe a method to evaluate the stability of LDA over a given corpus.  In the plot below, for each value of $k$, a LDA model with $k$ topics is fit to 25 subsets comprising 132 project descriptions.  These subset models are then compared to a reference model fit to all 165 project descriptions.  Agreement scores range from 0 to 1, with 1 indicating perfect agreement between the subset model and the reference model.  The line indicates the mean score at each value of $k$.  
-% 
-% 	\includegraphics[width = .17\linewidth]{../lda.pdf}
-% 	
-% 	For $k \in [2, 12]$, agreement was uniformly below .5 and frequently below .2, indicating that LDA produces unstable results when applied to the short project descriptions available in the public awards database.  Other methods also produced low-quality clustering.  Text analysis is likely to be more informative with longer source texts, such as project descriptions included with proposal submissions.  
-% }
+\headerbox{Text Analysis}{name = text, column = 2, span = 2, below = networks}{
+%	\lipsum[2]
+    \begin{multicols}{2}
+    Several text analysis methods were used to attempt to identify common themes or clusters of NRI projects, including topic modeling with Latent Dirichlet Allocation [LDA].  [cite] describe a method to evaluate the stability of LDA over a given corpus.  For each value of $k$, a LDA model with $k$ topics is fit to 25 subsets comprising 132 project descriptions.  These subset models are then compared to a reference model fit to all 165 project descriptions.  Agreement scores range from 0 to 1, with 1 indicating perfect agreement between the subset model and the reference model.  The line indicates the mean score at each value of $k$.
+    
+    \includegraphics[width = \linewidth]{../lda.pdf}
+    \end{multicols}
+	
+	For $k \in [2, 12]$, agreement was frequently below .2, indicating that LDA produces unstable results when applied to the short project descriptions available in the public awards database.  Text analysis is likely to be more informative with longer source texts.
+	
+}
 
-% \headerbox{References}{column = 2, below = networks}{
-% 	\begin{itemize}
-% 		\item ref1
-% 		\item ref2
-% 		\item ref3
-% 	\end{itemize}
-% }
+\headerbox{References}{name = references, column = 0, below = stats}{
+	\begin{itemize}
+		\item ref1
+		\item ref2
+		\item ref3
+	\end{itemize}
+}
 
-%\headerbox{}{name = logo, column = 3, below = text}{
-%	\begin{center}
-%	\includegraphics[height = 2in]{fake_logo.jpg}
-%	\end{center}
-%}
+\headerbox{}{name = logo, column = 0, below = references}{
+\begin{center}
+\includegraphics[height = 2in]{fake_logo.jpg}
+\end{center}
+}
 
 \end{poster}
 \end{document}
