@@ -120,11 +120,11 @@ components(org_net)$csize %>% table
 tikz(standAlone = TRUE, sanitize = TRUE, file = 'organizations.tex')
 par(mar = c(0,0,0,0))
 org_net %>%
-    # induced_subgraph(components(.)$membership == 1) %>%
+    induced_subgraph(components(.)$membership == 1) %>%
     plot(
         layout = layout_with_kk(.), #layout_with_fr(.),
         vertex.label = {V(.)$name %>% str_replace_all('([ \\-][^ \\-]*)[ \\-]', '\\1\n')},
-        vertex.label.cex = .5,
+        vertex.label.cex = .7,
         #vertex.size = 50 * betweenness(., normalized = TRUE),
         vertex.size = 5,
         vertex.label.color = 'black',

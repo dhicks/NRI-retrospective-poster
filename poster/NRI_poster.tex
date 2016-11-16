@@ -1,4 +1,4 @@
-\documentclass[paperheight = 24in, paperwidth = 36in, margin = 1in, 
+\documentclass[paperheight = 36in, paperwidth = 24in, margin = 1in, 
                 fontscale = .4]{baposter}
 
 \usepackage{hyperref}
@@ -12,7 +12,7 @@
 
 \begin{poster}{
 	grid = false, 
-	columns = 4,
+	columns = 3,
 	eyecatcher = true, 
 %	borderColor=bordercol,
 %	headerColorOne=headercol1,
@@ -52,7 +52,7 @@
 	% NSF logo and such
 }
 
-\headerbox{Introduction}{name=intro, column = 0, row = 0}{
+\headerbox{Introduction}{name=intro, column = 1, row = 0, span = 2}{
     The National Robotics Initiative [NRI] was launched on June 24, 2011, in a speech by President Obama at Carnegie Mellon University.  The goal of NRI is to accelerate the development and use of robots in the United States that work beside or cooperatively with people.  Over the last five years, innovative robotics research and applications emphasizing the realization of such co-robots working in symbiotic relationships with human partners has been supported by multiple agencies of the federal government. This poster provides an overview of an ongoing retrospective analysis of the research community supported by NRI.  
 }
 
@@ -60,7 +60,7 @@
 % 	Data were retrieved from NSF's public awards database, \url{www.nsf.gov/awardsearch/advancedSearch.jsp}.  The dataset includes start and end date, personnel, institutional affiliation, and short descriptions for every NSF-funded project with program element code 8013, indicating NRI funding. At this time, the dataset does not necessarily include projects funded by other agencies participating in NRI.  
 % }
 
-\headerbox{By the Numbers}{name = stats, column = 0, below = intro}{
+\headerbox{By the Numbers}{name = stats, column = 1, below = intro, span = 2}{
 	To date, NRI has funded over
 	\begin{itemize}
 	\item 165 distinct projects, involving
@@ -69,29 +69,30 @@
 	\end{itemize}
 }
 
-\headerbox{Projects}{name = projects, column = 1}{
+\headerbox{Projects}{name = projects, column = 0}{
 	\raggedright This strip plot shows the start and (anticipated) end date for every NRI project, sorted by start date.
 	\includegraphics[width = \linewidth]{../stripplot.pdf}
 }
 
-\headerbox{Collaboration Networks}{name = networks, column = 2, span = 2}{
+\headerbox{Collaboration Networks}{name = networks, column = 1, span = 2, below = stats}{
     \begin{multicols}{2}
-	NRI has fostered connections between researchers and institutions.  In the first collaboration network, individual PIs and Co-PIs (nodes) are connected by their institutional affiliations (blue edges) and NRI-funded projects (red edges).  In the second collaboration network, universities and other organizations (nodes) are connected by their participation in NRI-funded projects (edges).  
+	NRI has fostered connections between researchers and institutions.  On the left, individual PIs and Co-PIs (nodes) are connected by their institutional affiliations (blue edges) and NRI-funded projects (red edges).  On the right, universities and other organizations (nodes) are connected by their participation in NRI-funded projects (edges).  
 	\end{multicols}
 	
 	\begin{center}
-		\includegraphics[width = .49\linewidth]{../individuals.pdf}
-		\includegraphics[width = .49\linewidth]{../organizations.pdf}
+		\raisebox{.5\height}{\includegraphics[width = .39\linewidth]{../individuals.pdf}}
+		\includegraphics[width = .6\linewidth]{../organizations.pdf}
 	\end{center}
 	
 	% Both plots show the largest connected component in the respective networks.  These components include 60\% of NRI-funded PIs and Co-PIs (first network) and 45\% of NRI-participating organizations (second network).  
 }
 
-\headerbox{Text Analysis}{name = text, column = 2, span = 2, below = networks}{
+\headerbox{Text Analysis}{name = text, column = 1, span = 2, below = networks}{
 %	\lipsum[2]
     \begin{multicols}{2}
-    Several text analysis methods were used to attempt to identify common themes or clusters of NRI projects, including topic modeling with Latent Dirichlet Allocation [LDA].  [cite] describe a method to evaluate the stability of LDA over a given corpus.  For each value of $k$, a LDA model with $k$ topics is fit to 25 subsets comprising 132 project descriptions.  These subset models are then compared to a reference model fit to all 165 project descriptions.  Agreement scores range from 0 to 1, with 1 indicating perfect agreement between the subset model and the reference model.  The line indicates the mean score at each value of $k$.
-    
+    Several text analysis methods were used to attempt to identify common themes or clusters of NRI projects, including topic modeling with Latent Dirichlet Allocation [LDA].  [cite] describe a method to evaluate the stability of LDA over a given corpus.  For each value of $k$, a LDA model with $k$ topics is fit to 25 subsets comprising 132 project descriptions.  These subset models are then compared to a reference model fit to all 165 project descriptions.  Agreement scores range from 0 to 1, with 1 indicating perfect agreement.  The line indicates the mean score at each value of $k$.
+    \vfill
+    \columnbreak
     \includegraphics[width = \linewidth]{../lda.pdf}
     \end{multicols}
 	
@@ -99,7 +100,7 @@
 	
 }
 
-\headerbox{References}{name = references, column = 0, below = stats}{
+\headerbox{References}{name = references, column = 1, span = 2, below = text}{
 	\begin{itemize}
 		\item ref1
 		\item ref2
@@ -107,9 +108,9 @@
 	\end{itemize}
 }
 
-\headerbox{}{name = logo, column = 0, below = references}{
+\headerbox{}{name = logo, column = 0, below = projects}{
 \begin{center}
-\includegraphics[height = 2in]{fake_logo.jpg}
+\includegraphics[height = .7in]{fake_logo.jpg}
 \end{center}
 }
 
