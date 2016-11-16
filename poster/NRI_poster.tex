@@ -1,6 +1,8 @@
 \documentclass[paperheight = 36in, paperwidth = 24in, margin = 1in, 
                 fontscale = .4]{baposter}
 
+\usepackage[style = numeric]{biblatex}
+    \addbibresource{references.bib}
 \usepackage{hyperref}
 \usepackage{lipsum}
 \usepackage{multicol}
@@ -90,7 +92,7 @@
 \headerbox{Text Analysis}{name = text, column = 1, span = 2, below = networks}{
 %	\lipsum[2]
     \begin{multicols}{2}
-    Several text analysis methods were used to attempt to identify common themes or clusters of NRI projects, including topic modeling with Latent Dirichlet Allocation [LDA].  [cite] describe a method to evaluate the stability of LDA over a given corpus.  For each value of $k$, a LDA model with $k$ topics is fit to 25 subsets comprising 132 project descriptions.  These subset models are then compared to a reference model fit to all 165 project descriptions.  Agreement scores range from 0 to 1, with 1 indicating perfect agreement.  The line indicates the mean score at each value of $k$.
+    Several text analysis methods were used to attempt to identify common themes or clusters of NRI projects, including topic modeling with Latent Dirichlet Allocation [LDA].  \textcite{Greene2014} describe a method to evaluate the stability of LDA over a given corpus.  For each value of $k$, a LDA model with $k$ topics is fit to 25 subsets comprising 132 project descriptions.  These subset models are then compared to a reference model fit to all 165 project descriptions.  Agreement scores range from 0 to 1, with 1 indicating perfect agreement.  The line indicates the mean score at each value of $k$.
     \vfill
     \columnbreak
     \includegraphics[width = \linewidth]{../lda.pdf}
@@ -101,11 +103,7 @@
 }
 
 \headerbox{References}{name = references, column = 1, span = 2, below = text}{
-	\begin{itemize}
-		\item ref1
-		\item ref2
-		\item ref3
-	\end{itemize}
+	\printbibliography[heading = none]
 }
 
 \headerbox{}{name = logo, column = 0, below = projects}{
