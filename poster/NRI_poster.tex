@@ -4,10 +4,10 @@
 \usepackage[style = numeric]{biblatex}
     \addbibresource{references.bib}
 \usepackage{hyperref}
-\usepackage{lipsum}
+% \usepackage{lipsum}
 \usepackage{multicol}
 
-\definecolor{boxcolor}{RGB}{0,215,230}
+% \definecolor{boxcolor}{RGB}{0,215,230}
 
 \begin{document}
 \typeout{Poster rendering started}
@@ -30,11 +30,8 @@
 	headerFontColor = white,
 	textborder=bars,
 	borderColor = black,
-	bgColorOne=white, 
-	bgColorTwo=blue!15,
-	background=shadeTB,
-%	headerborder=open,
-%  boxshade=plain
+	bgColorOne=white,
+	bgColorTwo=blue!15
 }
 %% Eye catcher
 {
@@ -56,7 +53,7 @@
 }
 
 \headerbox{Introduction}{name=intro, column = 1, row = 0, span = 2}{
-    The National Robotics Initiative [NRI] was launched on June 24, 2011, in a speech by President Obama at Carnegie Mellon University.  The goal of NRI is to accelerate the development and use of robots in the United States that work beside or cooperatively with people.  Over the last five years, innovative robotics research and applications emphasizing the realization of such co-robots working in symbiotic relationships with human partners has been supported by multiple agencies of the federal government. This poster provides an overview of an ongoing retrospective analysis of the research community supported by NRI.  
+    The National Robotics Initiative [NRI] was launched on June 24, 2011, in a speech by President Obama at Carnegie Mellon University.  The goal of NRI is to accelerate the development and use of robots in the United States that work beside or cooperatively with people.  Over the last five years, innovative robotics research and applications emphasizing the realization of such co-robots working in symbiotic relationships with human partners has been supported by multiple agencies of the federal government. This poster provides an overview of an ongoing retrospective analysis of the research community supported by NRI. This poser uses data from NSF's public award database, \url{www.nsf.gov/awardsearch/advancedSearch.jsp}.  
 }
 
 % \headerbox{Data Sources}{name = data, column = 0, below = intro}{
@@ -107,11 +104,11 @@
 	\printbibliography[heading = none]
 }
 
-\headerbox{}{name = logo, column = 0, below = projects}{
-\begin{center}
-\includegraphics[height = .7in]{fake_logo.jpg}
-\end{center}
-}
+% \headerbox{}{name = logo, column = 0, below = projects}{
+% \begin{center}
+% \includegraphics[height = .7in]{fake_logo.jpg}
+% \end{center}
+% }
 
 \end{poster}
 \end{document}

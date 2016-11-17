@@ -32,7 +32,7 @@ dataf = dataf %>% arrange(start) %>%
 dataf$color = rep_len(scales::brewer_pal(palette = 'Set1')(4), nrow(dataf))
 
 ## Plot
-tikz(height = 30, width = 8, sanitize = TRUE, standAlone = TRUE, 
+tikz(height = 34, width = 8, sanitize = TRUE, standAlone = TRUE, 
      file = 'stripplot.tex')
 ggplot(dataf, aes(title.format)) + 
     geom_linerange(aes(ymin = start, ymax = end), color = dataf$color, size = 2) +
